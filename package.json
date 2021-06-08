@@ -1,0 +1,44 @@
+{
+  "devDependencies": {
+    "@types/express": "^4.17.12",
+    "@types/jasmine": "^3.7.7",
+    "@types/node": "^15.12.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.3.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "jasmine": "^3.7.0",
+    "jasmine-core": "^3.7.1",
+    "jasmine-spec-reporter": "^7.0.0"
+  },
+  "name": "udacity-image-processing-api",
+  "description": "This project aims to give you a real-world scenario in which you would read and write to your disk via a Node.js express server rather than a database. The project you create serves two purposes: to prepare you for setting up scalable code and architecture for real-world projects and tie together some of the most popular middleware and utilities found in Node.js projects. This project barely touches the surface of what is possible but will prove your ability to use what you’ve learned in real-world scenarios.",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm run build && npm run jasmine",
+    "jasmine": "jasmine",
+    "start": "nodemon src/index.ts",
+    "build": "npx tsc",
+    "lint": "eslint . --ext .ts",
+    "prettier": "prettier --config .prettierrc --write **/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonpaco/nd-0067-c1-building-a-server-project-starter.git"
+  },
+  "author": "Jonathan Cardinale",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonpaco/nd-0067-c1-building-a-server-project-starter/issues"
+  },
+  "homepage": "https://github.com/jonpaco/nd-0067-c1-building-a-server-project-starter#readme"
+}
