@@ -1,0 +1,8 @@
+**/node_modules/**
+**/.ipynb_checkpoints/**
+.tempfile
+**/dist/**
+**/build/**
+**/*-lock.json
+.workspace-config.json
+Guide.ipynb
