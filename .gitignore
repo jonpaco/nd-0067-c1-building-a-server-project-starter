@@ -4,5 +4,6 @@
 **/dist/**
 **/build/**
 **/*-lock.json
+.DS_Store
 .workspace-config.json
 Guide.ipynb
