@@ -14,3 +14,6 @@ app.use('/api', router);
 app.listen(port, () => {
   console.log(`Listening on http://localhost:${port}.`);
 });
+
+// Export the application for use by jasmine and supertest.
+export default app;

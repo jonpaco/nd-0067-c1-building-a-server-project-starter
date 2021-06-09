@@ -4,8 +4,8 @@ import express from 'express'; // Gets the Express framework for routing http re
 const resize = express.Router();
 
 // Add the resize api to the routing endpoints to be exported.
-resize.get('/', (req: express.Request, res: express.Response) => {
-  res.send('Here is your endpoint!');
+resize.get('/:imagename', (req: express.Request, res: express.Response) => {
+  res.send('Success');
 });
 
 // Provide the router to external modules.
