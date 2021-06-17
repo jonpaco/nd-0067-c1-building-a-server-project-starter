@@ -31,7 +31,8 @@
   "scripts": {
     "test": "npm run build && npm run jasmine",
     "jasmine": "jasmine",
-    "start": "nodemon --ignore nodemon.json src/index.ts",
+    "start": "npm run build && node ./dist/index.js",
+    "debug": "nodemon --ignore nodemon.json src/index.ts",
     "build": "npx tsc",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --config .prettierrc --write ."

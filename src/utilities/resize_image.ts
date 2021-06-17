@@ -1,6 +1,6 @@
 import sharp from 'sharp'; // For resizing the image on the file system.
 import CacheManager from './cacheManager'; // For handling the image cacheing.
-import path from 'path'; // Used to joing paths together.
+import path from 'path'; // Used to joining paths together.
 
 // Root image file path.
 const rootPath = '../../images/';
@@ -28,11 +28,11 @@ const resize_image = async (
   if (!cache.isValidImageName(name)) {
     throw {
       message: 'Image not available'
-    }
+    };
   }
 
   // Find the image entry in the cache.
-  let [imageName, image] = cache.findMatch(height, width, name);
+  let [imageName, image] = cache.findMatch(height, width, name); // eslint-disable-line prefer-const
 
   // If the image was not already in the cache then create one.
   if (image === undefined) {
