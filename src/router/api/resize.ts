@@ -1,6 +1,6 @@
 import express from 'express'; // Gets the Express framework for routing http requests to endpoints.
-import resize_image from '../../utilities/resize_image';
-import path from 'path';
+import resize_image from '../../utilities/resize_image'; // Api used to resize the picture.
+import buildHtml from '../../template/view'; // The HTML template for displaying the image.
 
 // Create the application router to add the end point to.
 const resize = express.Router();
@@ -16,61 +16,54 @@ interface ResizeQuery {
   width: number;
 }
 
-// Add the resize api to the routing endpoints to be exported.
-const buildHtml = (path: string): string => {
-  const template = `
-  <!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Resize Image Template</title>
-  </head>
-
-  <body>
-  <img src="/${path}">
-  </body>
-  </html>
-  `;
-  return template;
-};
-
+// The route to access the image.
 resize.get(
   '/:image',
   async (
     req: express.Request<ResizeBody, ResizeQuery>,
-    res: express.Response
+    res: express.Response,
+    next: express.NextFunction
   ) => {
+    // Get the route parameter for the image name.
     const path = req.params.image;
 
+    // Check if a width was sent.
     let width = Number(req.query.width);
     if (!width) {
       width = 0;
     }
 
+    // Check if a height was sent.
     let height = Number(req.query.height);
     if (!height) {
       height = 0;
     }
 
+    // If either height or width are missing then make the image a square.
     if (height === 0 && width !== 0) {
       height = width;
     }
 
+    // If either height or width are missing then make the image a square.
     if (width === 0 && height !== 0) {
       width = height;
     }
 
+    // Attempt to resize the image
     let image_result = '';
     try {
       image_result = await resize_image(path, height, width);
     } catch (err) {
-      console.log('No Image Found');
+      // If we fail tell the user no image was found.
+      return next(err);
     }
 
+    // Make sure we got a valid image back and return to user.
     if (image_result) {
       res.send(buildHtml(image_result));
     } else {
-      res.status(404).send('Image Not Found....');
+      // Here to handle a strange edge case.
+      res.status(404).send('Image Not Found.');
     }
   }
 );

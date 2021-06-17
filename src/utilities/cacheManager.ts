@@ -1,6 +1,6 @@
 import fs from 'fs'; // For file system operations related to the image.
-import ImageCache from './imageCache';
-import CacheEntry from './cacheEntry';
+import ImageCache from './imageCache'; // A wrapper for each image type that is supported by the cache.
+import CacheEntry from './cacheEntry'; // A wrapper for each image file that is in the cache.
 
 // Defautl images.
 const defaultImages = [
@@ -114,4 +114,4 @@ class CacheManager {
   }
 }
 
-export default CacheManager;
+export { CacheManager as default, defaultImages, fileExtension };
