@@ -6,11 +6,11 @@ The main application starts in `src/index.ts`.
 
 In `index.ts` the folders for `images/` and `style/` are served up by express. The images in the images folder are used to present the resized image content. The style sheet is for simple formatting.
 
-The main route comes from `router/api/resize.ts`. Most of the logic in here is to simply check, validate, and clean the inputs. Then the data is passed through to the `resize_image` method. If the height and width of 0 are passed they are handled by simply returning the image supplied in the project template. Once the image is resized and returned a template string from `src/template/view.ts` is used to generate the html and displayed to the user.
+The main route comes from `router/api/resize.ts`. Most of the logic in here is to simply check, validate, and clean the inputs. Then the data is passed through to the `resize_image` method. If the height and width of 0 are passed they are handled by simply returning the image supplied in the project template. Once the image is resized and returned a template string from `src/template/view.ts` is used to generate the html and display it to the user.
 
 Core logic of the application centers around `src/utilities/resize_image`. In this method the classes of `utilities/cacheEntry`, `utilities/imageCache`, and `utilities/cacheManager` are used for keeping track of the files, which includes writing them to disk for a persistent cache. The json file `cache.json` at the root of the project is used to store the cache. The `cacheManager` is the top level of the cache management structure, the `imageCache` is an intermediate level that keeps track of which images are in the cache, and `cacheEntry` keeps track of each resized variant image. Other than that the only other piece of functionality in `resize_image` is to use `sharp` to resize the image and store to disk.
 
-All tests are located in the `src/tests/` folder. There is one suite of tests for testing the resize route using supertest. There is an additional test spec for testing the resize image behavior. The resize test behavior image behavior is in `resizeSpec.ts`.
+All tests are located in the `src/tests/` folder. There is one suite of tests for testing the resize route using supertest. There is an additional test spec for testing the resize image behavior. The resize test is in `resizeSpec.ts`. The route testing is in `indexSpec.ts`.
 
 ### The following route types are supported
 
