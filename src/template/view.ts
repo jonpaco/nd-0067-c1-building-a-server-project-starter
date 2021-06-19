@@ -10,6 +10,7 @@ const buildHtml = (path: string): string => {
   </head>
 
   <body>
+  <h1 class="center">${path}</h1>
   <img src="/${path}" class="center">
   </body>
   </html>
